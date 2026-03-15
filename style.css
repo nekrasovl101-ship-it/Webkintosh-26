@@ -1,0 +1,193 @@
+
+         body {
+        margin: 0;
+        height: 100vh;
+        background-image: url(macos26.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+       
+        }
+    
+   .menu {
+        position: fixed;
+       bottom: 20px;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 1060px;
+       height: 20px;
+       padding: 1000px;
+                  background: rgba(255, 255, 255, 0.176);
+       backdrop-filter: blur(15px);
+        border-radius:  20px;
+        padding: 30px;
+        display: flex;
+    
+    
+}
+input {
+  border: none;
+  background:rgba(255, 255, 255, 0.472);
+  backdrop-filter: blur(20px);
+  border-radius: 55px;
+  
+}
+.menu img {
+  width: 60px;
+  transition: 0.2s;
+}
+.menu img:hover {
+  transform: scale(1.6);
+}
+button {
+  border: none;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-radius: 55px;
+  padding: 10px 20px;
+  background-color: rgb(156, 148, 148);
+}
+#settingsApp {
+background-color: rgb(98, 97, 97);
+}
+.menuverh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+
+}
+.menuverh button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  
+  background-color: transparent;
+
+
+}
+.menuset {
+      width: 150px;
+      height: 1000px;
+background: rgba(255, 255, 255, 0.176);
+backdrop-filter: blur(20px);
+border-radius: 55px;
+}
+#appsApp {
+  backdrop-filter: blur(10px);
+  background: url(#glass-distortion);
+}
+#safariApp {
+  background: transparent;
+  backdrop-filter: blur(15px);
+}
+#finderApp {
+  background: rgba(60, 58, 58, 0.634);
+  backdrop-filter: blur(15px);
+}
+.menuFINDER {
+      width: 300px;
+      height: 850px;
+background-color: rgb(70, 69, 69);
+
+border-radius: 55px;
+}
+html {
+  cursor: url(Cursor/cursror.png), auto;
+}
+#pop {
+  background: rgba(255, 255, 255, 0.176);
+  backdrop-filter: blur(20px);
+  border-radius: 33px;
+  padding: 20px 10px;
+  border: none;
+  right: 10000px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transform: translateY(-230px);
+  
+   
+}
+/* LIQUID GLASS STYLES */
+
+.liquidGlass-wrapper {
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  overflow: hidden;
+
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+       position: fixed;
+       bottom: 20px;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 1060px;
+       height: 20px;
+       padding: 1000px;
+
+        border-radius:  20px;
+        padding: 30px;
+        display: flex;
+}
+
+.liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.107);
+}
+
+.liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+
+  box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.107),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.liquidGlass-text {
+  z-index: 3;
+  font-size: 2rem;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.dock {
+    transition: all 0.1s ease-in;
+      transition: 0.2s;
+}
+.dock img {
+  width: 60px;
+  transition: 0.2s;
+}
+.wrapper img:hover {
+  transform: scale(1.3);
+
+}
+.buttons  {
+  background: transparent;
+}

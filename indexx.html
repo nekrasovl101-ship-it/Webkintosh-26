@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desktop</title>
+
+<style>
+body{
+     height: 100vh;
+        background: url('macos26.jpg');
+               background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+}
+/* Dock */
+.menu{
+position:absolute;
+top: 710px;
+left:20px;
+height:80px;
+width:1200px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+border-radius:20px;
+}
+
+/* окна приложений */
+.window{
+position:absolute;
+top:200px;
+left:300px;
+width:500px;
+height:300px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+display:none;
+overflow:hidden;
+}
+
+.bar{
+background:#222;
+color:white;
+padding:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:move;
+user-select:none;
+}
+
+.buttons button{
+border:none;
+background:#444;
+color:white;
+margin-left:5px;
+padding:5px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.content{
+padding:20px;
+}
+body{ 
+  cursor: url(Cursor/cursror.png), auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+
+<img src="finder.png" onclick="openApp('finderApp')" style="border-radius:15px; position:absolute; top:10px; left:20px; width:60px;">
+<img src="APPS.PNG" onclick="openApp('appsApp')" style="border-radius:15px; position:absolute; top:10px; left:100px; width:60px;">
+<img src="safari.png" onclick="openApp('safariApp')" style="border-radius:15px; position:absolute; top:10px; left:180px; width:60px;">
+<img src="message.png" onclick="openApp('messageApp')" style="border-radius:15px; position:absolute; top:10px; left:260px; width:60px;">
+<img src="email.png" onclick="openApp('emailApp')" style="border-radius:15px; position:absolute; top:10px; left:340px; width:60px;">
+<img src="maps.png" onclick="openApp('mapsApp')" style="border-radius:15px; position:absolute; top:10px; left:420px; width:60px;">
+<img src="photos.png" onclick="openApp('photosApp')" style="border-radius:15px; position:absolute; top:10px; left:500px; width:60px;">
+<img src="facetime.png" onclick="openApp('facetimeApp')" style="border-radius:15px; position:absolute; top:10px; left:580px; width:60px;">
+<img src="calendar.png" onclick="openApp('calendarApp')" style="border-radius:15px; position:absolute; top:10px; left:660px; width:60px;">
+<img src="contact.png" onclick="openApp('contactApp')" style="border-radius:15px; position:absolute; top:10px; left:740px; width:60px;">
+<img src="reminders.png" onclick="openApp('remindersApp')" style="border-radius:15px; position:absolute; top:10px; left:820px; width:60px;">
+<img src="muisic.png" onclick="openApp('musicApp')" style="border-radius:15px; position:absolute; top:10px; left:900px; width:60px;">
+<img src="settings.png" onclick="openApp('settingsApp')" style="border-radius:15px; position:absolute; top:10px; left:980px; width:60px;">
+<img src="trash.png" onclick="openApp('trashApp')" style="border-radius:15px; position:absolute; top:10px; left:1060px; width:60px; mix-blend-mode:multiply;">
+<div class="liquidGlass-wrapper dock">
+          <div class="liquidGlass-effect"></div>
+          <div class="liquidGlass-tint"></div>
+          <div class="liquidGlass-shine"></div>
+          <div class="liquidGlass-text">
+              <svg style="display: none">
+      <filter
+        id="glass-distortion"
+        x="0%"
+        y="0%"
+        width="100%"
+        height="100%"
+        filterUnits="objectBoundingBox"
+      >
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.01 0.01"
+          numOctaves="1"
+          seed="5"
+          result="turbulence"
+        />
+        <!-- Seeds: 14, 17,  -->
+
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+        <feSpecularLighting
+          in="softMap"
+          surfaceScale="5"
+          specularConstant="1"
+          specularExponent="100"
+          lighting-color="white"
+          result="specLight"
+        >
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+
+        <feComposite
+          in="specLight"
+          operator="arithmetic"
+          k1="0"
+          k2="1"
+          k3="1"
+          k4="0"
+          result="litImage"
+        />
+
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="softMap"
+          scale="150"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
+</div>
+
+
+<!-- окна приложений -->
+
+<div id="finderApp" class="window">
+  <div class="bar">
+    <span>Finder</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('finderApp')">⬜</button>
+      <button onclick="closeApp('finderApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Finder приложение</div>
+</div>
+
+<div id="appsApp" class="window">
+  <div class="bar">
+    <span>Apps</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('appsApp')">⬜</button>
+      <button onclick="closeApp('appsApp')">✕</button>
+    </div>
+  </div>
+  <div class="content"><img src="finder.png" onclick="openApp('finderApp')" style="border-radius:15px; position:absolute; top:10px; left:20px; width:60px;">
+<img src="APPS.PNG" onclick="openApp('appsApp')" style="border-radius:15px; position:absolute; top:10px; left:100px; width:60px;">
+<img src="safari.png" onclick="openApp('safariApp')" style="border-radius:15px; position:absolute; top:10px; left:180px; width:60px;">
+<img src="message.png" onclick="openApp('messageApp')" style="border-radius:15px; position:absolute; top:10px; left:260px; width:60px;">
+<img src="email.png" onclick="openApp('emailApp')" style="border-radius:15px; position:absolute; top:10px; left:340px; width:60px;">
+<img src="maps.png" onclick="openApp('mapsApp')" style="border-radius:15px; position:absolute; top:10px; left:420px; width:60px;">
+<img src="photos.png" onclick="openApp('photosApp')" style="border-radius:15px; position:absolute; top:10px; left:500px; width:60px;">
+<img src="facetime.png" onclick="openApp('facetimeApp')" style="border-radius:15px; position:absolute; top:10px; left:580px; width:60px;">
+<img src="calendar.png" onclick="openApp('calendarApp')" style="border-radius:15px; position:absolute; top:10px; left:660px; width:60px;">
+<img src="contact.png" onclick="openApp('contactApp')" style="border-radius:15px; position:absolute; top:10px; left:740px; width:60px;">
+<img src="reminders.png" onclick="openApp('remindersApp')" style="border-radius:15px; position:absolute; top:10px; left:820px; width:60px;">
+<img src="muisic.png" onclick="openApp('musicApp')" style="border-radius:15px; position:absolute; top:10px; left:900px; width:60px;">
+<img src="settings.png" onclick="openApp('settingsApp')" style="border-radius:15px; position:absolute; top:10px; left:980px; width:60px;">
+<img src="trash.png" onclick="openApp('trashApp')" style="border-radius:15px; position:absolute; top:10px; left:1060px; width:60px; mix-blend-mode:multiply;"> trtrt</div>
+</div>
+
+<div id="safariApp" class="window">
+  <div class="bar">
+    <span>Safari</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('safariApp')">⬜</button>
+      <button onclick="closeApp('safariApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Safari браузер</div>
+</div>
+
+<div id="messageApp" class="window">
+  <div class="bar">
+    <span>Messages</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('messageApp')">⬜</button>
+      <button onclick="closeApp('messageApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Сообщения</div>
+</div>
+
+<div id="emailApp" class="window">
+  <div class="bar">
+    <span>Email</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('emailApp')">⬜</button>
+      <button onclick="closeApp('emailApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Почта</div>
+</div>
+
+<div id="mapsApp" class="window">
+  <div class="bar">
+    <span>Maps</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('mapsApp')">⬜</button>
+      <button onclick="closeApp('mapsApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Карты</div>
+</div>
+
+<div id="photosApp" class="window">
+  <div class="bar">
+    <span>Photos</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('photosApp')">⬜</button>
+      <button onclick="closeApp('photosApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Фото</div>
+</div>
+
+<div id="facetimeApp" class="window">
+  <div class="bar">
+    <span>FaceTime</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('facetimeApp')">⬜</button>
+      <button onclick="closeApp('facetimeApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">FaceTime</div>
+</div>
+
+<div id="calendarApp" class="window">
+  <div class="bar">
+    <span>Calendar</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('calendarApp')">⬜</button>
+      <button onclick="closeApp('calendarApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Календарь</div>
+</div>
+
+<div id="contactApp" class="window">
+  <div class="bar">
+    <span>Contacts</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('contactApp')">⬜</button>
+      <button onclick="closeApp('contactApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Контакты</div>
+</div>
+
+<div id="remindersApp" class="window">
+  <div class="bar">
+    <span>Reminders</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('remindersApp')">⬜</button>
+      <button onclick="closeApp('remindersApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Напоминания</div>
+</div>
+
+<div id="musicApp" class="window">
+  <div class="bar">
+    <span>Music</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('musicApp')">⬜</button>
+      <button onclick="closeApp('musicApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Музыка</div>
+</div>
+
+<div id="settingsApp" class="window">
+  <div class="bar">
+    <span>Settings</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('settingsApp')">⬜</button>
+      <button onclick="closeApp('settingsApp')">✕</button>
+    </div>
+  </div>
+  <div class="content"><div class="menuset"></div> <h1>Пришло новое обновление ПО</h1> <a href="Webkintosh/update.exe" download="">Установить</a></div>
+</div>
+
+<div id="trashApp" class="window">
+  <div class="bar">
+    <span>Trash</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('trashApp')">⬜</button>
+      <button onclick="closeApp('trashApp')">✕</button>
+    </div>
+  </div>
+  <div class="content">Корзина</div>
+</div>
+
+
+<script>
+function openApp(id){
+  const app = document.getElementById(id);
+  app.style.display = "block";
+}
+
+function closeApp(id){
+  document.getElementById(id).style.display = "none";
+}
+
+function fullscreenApp(id){
+  const app = document.getElementById(id);
+
+  if(app.dataset.fullscreen !== "true"){
+    app.dataset.oldTop = app.style.top || "200px";
+    app.dataset.oldLeft = app.style.left || "300px";
+    app.dataset.oldWidth = app.style.width || "500px";
+    app.dataset.oldHeight = app.style.height || "300px";
+
+    app.style.top = "0";
+    app.style.left = "0";
+    app.style.width = "100vw";
+    app.style.height = "100vh";
+
+    app.dataset.fullscreen = "true";
+  } else {
+    app.style.top = app.dataset.oldTop;
+    app.style.left = app.dataset.oldLeft;
+    app.style.width = app.dataset.oldWidth;
+    app.style.height = app.dataset.oldHeight;
+
+    app.dataset.fullscreen = "false";
+  }
+}
+
+// перетаскивание каждого окна
+let currentWindow = null;
+let offsetX = 0;
+let offsetY = 0;
+
+document.querySelectorAll(".bar").forEach(bar => {
+  bar.addEventListener("mousedown", function(e){
+    currentWindow = this.parentElement;
+
+    if(currentWindow.dataset.fullscreen === "true") return;
+
+    offsetX = e.clientX - currentWindow.offsetLeft;
+    offsetY = e.clientY - currentWindow.offsetTop;
+  });
+});
+
+document.addEventListener("mousemove", function(e){
+  if(currentWindow){
+    if(currentWindow.dataset.fullscreen === "true") return;
+
+    currentWindow.style.left = (e.clientX - offsetX) + "px";
+    currentWindow.style.top = (e.clientY - offsetY) + "px";
+  }
+});
+
+document.addEventListener("mouseup", function(){
+  currentWindow = null;
+});
+</script>
+
+</body>
+</html>

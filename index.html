@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desktop</title>
+
+<style>
+  
+body{
+
+        height: 100vh;
+        background-image: url('macos26.jpg');
+               background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+
+margin:0;
+font-family:sans-serif;
+}
+
+   .menu {
+        position: fixed;
+       bottom: 20px;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 9000px;
+       height: 20px;
+       padding: 1000px;
+           background: rgba(255, 255, 255, 0.176);
+        backdrop-filter: blur(10px);
+        border-radius:  20px;
+        padding: 30px; }
+
+/* окна приложений */
+.window{
+position:absolute;
+top:200px;
+left:300px;
+width:500px;
+height:300px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+display:none;
+overflow:hidden;
+}
+
+.bar{
+background:#222;
+color:white;
+padding:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:move;
+user-select:none;
+}
+
+.buttons button{
+border:none;
+background:#444;
+color:white;
+margin-left:5px;
+padding:5px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.content{
+padding:20px;
+}
+</style>
+</head>
+
+<body style="cursor: url(Cursor/cursror.png), auto;">
+  <div class="menuverh">
+   
+  </div>
+   <button style="background: transparent;" onclick="pop.showModal()"><b style="font-size: 20px;"></b></button>
+    <dialog id="pop">
+      <p>О системе</p>
+      <p>Системные настройки</p>
+      <p>App Store</p>
+      <p>Недавние элементы</p>
+      <p>Перезагрузить...</p>
+      <p>Завершить работу...</p>
+       <button onclick="pop.close()">Закрыть</button>
+    </dialog>
+  <b>finder</b>
+  <b>Файл</b>
+  <b>Правка</b>
+  <b>Вид</b>
+  <b>Переход</b>
+  <b>Окно</b>
+  <b>Справка</b>
+ 
+
+  <div class="wrapper">
+
+    
+        <div class="liquidGlass-wrapper dock">
+          <div class="liquidGlass-effect"></div>
+          <div class="liquidGlass-tint"></div>
+          <div class="liquidGlass-shine"></div>
+          <div class="liquidGlass-text">
+            <div class="dock">
+          <img src="finder.png" onclick="openApp('finderApp')" style="border-radius:15px; position:absolute; top:10px; left:20px; width:60px;">
+<img src="APPS.PNG" onclick="openApp('appsApp')" style="border-radius:15px; position:absolute; top:10px; left:100px; width:60px;">
+<img src="safari.png" onclick="openApp('safariApp')" style="border-radius:15px; position:absolute; top:10px; left:180px; width:60px;">
+<img src="message.png" onclick="openApp('messageApp')" style="border-radius:15px; position:absolute; top:10px; left:260px; width:60px;">
+<img src="email.png" onclick="openApp('emailApp')" style="border-radius:15px; position:absolute; top:10px; left:340px; width:60px;">
+<img src="maps.png" onclick="openApp('mapsApp')" style="border-radius:15px; position:absolute; top:10px; left:420px; width:60px;">
+<img src="photos.png" onclick="openApp('photosApp')" style="border-radius:15px; position:absolute; top:10px; left:500px; width:60px;">
+<img src="facetime.png" onclick="openApp('facetimeApp')" style="border-radius:15px; position:absolute; top:10px; left:580px; width:60px;">
+<img src="calendar.png" onclick="openApp('calendarApp')" style="border-radius:15px; position:absolute; top:10px; left:660px; width:60px;">
+<img src="contact.png" onclick="openApp('contactApp')" style="border-radius:15px; position:absolute; top:10px; left:740px; width:60px;">
+<img src="reminders.png" onclick="openApp('remindersApp')" style="border-radius:15px; position:absolute; top:10px; left:820px; width:60px;">
+<img src="muisic.png" onclick="openApp('musicApp')" style="border-radius:15px; position:absolute; top:10px; left:900px; width:60px;">
+<img src="settings.png" onclick="openApp('settingsApp')" style="border-radius:15px; position:absolute; top:10px; left:980px; width:60px;">
+<img src="trash-Photoroom.png" onclick="openApp('trashApp')" style="border-radius:15px; position: absolute; top: 0px;  left: 1040px; width:100px;">
+
+            </div>
+          </div>
+        </div>
+  
+
+    
+
+    <svg style="display: none">
+      <filter
+        id="glass-distortion"
+        x="0%"
+        y="0%"
+        width="100%"
+        height="100%"
+        filterUnits="objectBoundingBox"
+      >
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.01 0.01"
+          numOctaves="1"
+          seed="5"
+          result="turbulence"
+        />
+        <!-- Seeds: 14, 17,  -->
+
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+        <feSpecularLighting
+          in="softMap"
+          surfaceScale="5"
+          specularConstant="1"
+          specularExponent="100"
+          lighting-color="white"
+          result="specLight"
+        >
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+
+        <feComposite
+          in="specLight"
+          operator="arithmetic"
+          k1="0"
+          k2="1"
+          k3="1"
+          k4="0"
+          result="litImage"
+        />
+
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="softMap"
+          scale="150"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
+
+
+<!-- окна приложений -->
+
+<div id="finderApp" class="window">
+  <div class="bar">
+    <span>Finder</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('finderApp')">🟢</button>
+      <button onclick="closeApp('finderApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content"><div class="menuFINDER"> <h1 style="margin: 30px;">Недавние</h1><h3 style="margin: 30px;">Программы</h3></div>
+  <!-- 1 --><img src="finder.png" onclick="openApp('finderApp')" style="border-radius:15px; position:absolute; top:100px; left:600px; width:60px;">
+  <!-- 2 --><img src="APPS.PNG" onclick="openApp('appsApp')" style="border-radius:15px; position:absolute; top:100px; left:700px; width:60px;">
+  <!-- 3 --><img src="safari.png" onclick="openApp('safariApp')" style="border-radius:15px; position:absolute; top:100px; left:800px; width:60px;">
+  <!-- 4 --><img src="message.png" onclick="openApp('messageApp')" style="border-radius:15px; position:absolute; top:100px; left:900px; width:60px;">
+  <!-- 5 --><img src="email.png" onclick="openApp('emailApp')" style="border-radius:15px; position:absolute; top:100px; left:1000px; width:60px;">
+  <!-- 6 --><img src="maps.png" onclick="openApp('mapsApp')" style="border-radius:15px; position:absolute; top:100px; left:1100px; width:60px;">
+<img src="photos.png" onclick="openApp('photosApp')" style="border-radius:15px; position:absolute; top:200px; left:500px; width:60px;">
+<img src="facetime.png" onclick="openApp('facetimeApp')" style="border-radius:15px; position:absolute; top:200px; left:580px; width:60px;">
+<img src="calendar.png" onclick="openApp('calendarApp')" style="border-radius:15px; position:absolute; top:200px; left:660px; width:60px;">
+<img src="contact.png" onclick="openApp('contactApp')" style="border-radius:15px; position:absolute; top:200px; left:740px; width:60px;">
+<img src="reminders.png" onclick="openApp('remindersApp')" style="border-radius:15px; position:absolute; top:200px; left:820px; width:60px;">
+<img src="muisic.png" onclick="openApp('musicApp')" style="border-radius:15px; position:absolute; top:200px; left:900px; width:60px;">
+<img src="settings.png" onclick="openApp('settingsApp')" style="border-radius:15px; position:absolute; top:200px; left:980px; width:60px;">
+<img src="trash-Photoroom.png" onclick="openApp('trashApp')" style="border-radius:15px; position:absolute; top:200px; left:1060px; width:60px; mix-blend-mode:multiply;">
+
+</div>
+</div>
+
+
+
+<div id="appsApp" class="window">
+  <div class="bar">
+    <span>Apps</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('appsApp')">🟢</button>
+      <button onclick="closeApp('appsApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content"><img src="finder.png" onclick="openApp('finderApp')" style="border-radius:15px; position:absolute; top:100px; left:20px; width:60px;">
+<img src="APPS.PNG" onclick="openApp('appsApp')" style="border-radius:15px; position:absolute; top:100px; left:100px; width:60px;">
+<img src="safari.png" onclick="openApp('safariApp')" style="border-radius:15px; position:absolute; top:100px; left:180px; width:60px;">
+<img src="message.png" onclick="openApp('messageApp')" style="border-radius:15px; position:absolute; top:100px; left:260px; width:60px;">
+<img src="email.png" onclick="openApp('emailApp')" style="border-radius:15px; position:absolute; top:100px; left:340px; width:60px;">
+<img src="maps.png" onclick="openApp('mapsApp')" style="border-radius:15px; position:absolute; top:100px; left:420px; width:60px;">
+<img src="photos.png" onclick="openApp('photosApp')" style="border-radius:15px; position:absolute; top:200px; left:500px; width:60px;">
+<img src="facetime.png" onclick="openApp('facetimeApp')" style="border-radius:15px; position:absolute; top:200px; left:580px; width:60px;">
+<img src="calendar.png" onclick="openApp('calendarApp')" style="border-radius:15px; position:absolute; top:200px; left:660px; width:60px;">
+<img src="contact.png" onclick="openApp('contactApp')" style="border-radius:15px; position:absolute; top:200px; left:740px; width:60px;">
+<img src="reminders.png" onclick="openApp('remindersApp')" style="border-radius:15px; position:absolute; top:200px; left:820px; width:60px;">
+<img src="muisic.png" onclick="openApp('musicApp')" style="border-radius:15px; position:absolute; top:200px; left:900px; width:60px;">
+<img src="settings.png" onclick="openApp('settingsApp')" style="border-radius:15px; position:absolute; top:200px; left:980px; width:60px;">
+<img src="trash-Photoroom.png" onclick="openApp('trashApp')" style="border-radius:15px; position:absolute; top:200px; left:1060px; width:60px; mix-blend-mode:multiply;">
+</div>
+</div>
+
+<div id="safariApp" class="window">
+  <div class="bar">
+    <span>Safari</span>
+    <div class="buttons">
+            <button onclick="fullscreenApp('safariApp')">🟢</button>
+      <button onclick="closeApp('safariApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">      <div style="text-align: center;"> <img src="Normium-logore.PNG" alt="" width="200" style="text-align: center;">
+    <input id="q" placeholder=" Поиск в Safari" style="width: 300px; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin-top: 20px;">
+<button onclick="go()">Найти</button>
+
+<script>
+function go(){
+  const q = encodeURIComponent(document.getElementById('q').value);
+  location.href = 'https://www.google.com/search?q=' + q;
+}
+</script>
+</div></div>
+ 
+
+
+</div>
+    
+
+</div>
+
+<div id="messageApp" class="window">
+  <div class="bar">
+    <span>Messages</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('messageApp')">🟢</button>
+      <button onclick="closeApp('messageApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">Сообщения</div>
+</div>
+
+<div id="emailApp" class="window">
+  <div class="bar">
+    <span>Email</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('emailApp')">🟢</button>
+      <button onclick="closeApp('emailApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">Почта</div>
+</div>
+
+<div id="mapsApp" class="window">
+  <div class="bar">
+    <span>Maps</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('mapsApp')">🟢</button>
+      <button onclick="closeApp('mapsApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3088384.134365539!2d33.65064281250001!3d44.35985200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40f3d7f954ba2c95%3A0x9410b5e0b720e06f!2z0K3QudGE0LXQu9C10LLQsCDQsdCw0YjQvdGP!5e1!3m2!1sru!2sru!4v1772963956661!5m2!1sru!2sru" width="10009" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div>
+
+<div id="photosApp" class="window">
+  <div class="bar">
+    <span>Photos</span>
+    <div class="buttons">
+       <button onclick="fullscreenApp('photosApp')">🟢</button>
+      <button onclick="closeApp('photosApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">Фото</div>
+</div>
+
+<div id="facetimeApp" class="window">
+  <div class="bar">
+    <span>FaceTime</span>
+    <div class="buttons">
+          <button onclick="fullscreenApp('facetimeApp')">🟢</button>
+      <button onclick="closeApp('facetimeApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">FaceTime</div>
+</div>
+
+<div id="calendarApp" class="window">
+  <div class="bar">
+    <span>Calendar</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('calendarApp')">🟢</button>
+      <button onclick="closeApp('calendarApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">Календарь</div>
+</div>
+
+<div id="contactApp" class="window">
+  <div class="bar">
+    <span>Contacts</span>
+    <div class="buttons">
+       <button onclick="fullscreenApp('contactApp')">🟢</button>
+      <button onclick="closeApp('contactApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">Контакты</div>
+</div>
+
+<div id="remindersApp" class="window">
+  <div class="bar">
+    <span>Reminders</span>
+    <div class="buttons">
+      <button onclick="fullscreenApp('remindersApp')">🟢</button>
+      <button onclick="closeApp('remindersApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">Напоминания</div>
+</div>
+
+<div id="musicApp" class="window">
+  <div class="bar">
+    <span>Music</span>
+    <div class="buttons">
+          <button onclick="fullscreenApp('musicApp')">🟢</button>
+      <button onclick="closeApp('musicApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content"><iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="1000" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ru/playlist/%D0%BD%D0%BE%D1%81%D1%82%D0%B0%D0%BB%D1%8C%D0%B3%D0%B8%D1%8F-%D0%BF%D0%BE-%D0%BF%D0%BE%D0%BF-%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B5-2000-%D1%85/pl.a01da9f72c044c23b473973c744517e8"></iframe></div>
+</div>
+
+<div id="settingsApp" class="window">
+  <div class="bar">
+    <span>Settings</span>
+    <div class="buttons">
+           <button onclick="fullscreenApp('settingsApp')">🟢</button>
+      <button onclick="closeApp('settingsApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">
+  <div class="menuset"><h1>Comming Soon...</h1></div>
+  <H1></H1>[]
+  </div>
+</div>
+
+<div id="trashApp" class="window">
+  <div class="bar">
+    <span>Trash</span>
+    <div class="buttons">
+          <button onclick="fullscreenApp('trashApp')">🟢</button>
+      <button onclick="closeApp('trashApp')">🔴</button>
+    </div>
+  </div>
+  <div class="content">Корзина</div>
+</div>
+
+
+<script>
+function openApp(id){
+  const app = document.getElementById(id);
+  app.style.display = "block";
+}
+
+function closeApp(id){
+  document.getElementById(id).style.display = "none";
+}
+
+function fullscreenApp(id){
+  const app = document.getElementById(id);
+
+  if(app.dataset.fullscreen !== "true"){
+    app.dataset.oldTop = app.style.top || "200px";
+    app.dataset.oldLeft = app.style.left || "300px";
+    app.dataset.oldWidth = app.style.width || "500px";
+    app.dataset.oldHeight = app.style.height || "300px";
+
+    app.style.top = "0";
+    app.style.left = "0";
+    app.style.width = "100vw";
+    app.style.height = "100vh";
+
+    app.dataset.fullscreen = "true";
+  } else {
+    app.style.top = app.dataset.oldTop;
+    app.style.left = app.dataset.oldLeft;
+    app.style.width = app.dataset.oldWidth;
+    app.style.height = app.dataset.oldHeight;
+
+    app.dataset.fullscreen = "false";
+  }
+}
+
+// перетаскивание каждого окна
+let currentWindow = null;
+let offsetX = 0;
+let offsetY = 0;
+
+document.querySelectorAll(".bar").forEach(bar => {
+  bar.addEventListener("mousedown", function(e){
+    currentWindow = this.parentElement;
+
+    if(currentWindow.dataset.fullscreen === "true") return;
+
+    offsetX = e.clientX - currentWindow.offsetLeft;
+    offsetY = e.clientY - currentWindow.offsetTop;
+  });
+});
+
+document.addEventListener("mousemove", function(e){
+  if(currentWindow){
+    if(currentWindow.dataset.fullscreen === "true") return;
+
+    currentWindow.style.left = (e.clientX - offsetX) + "px";
+    currentWindow.style.top = (e.clientY - offsetY) + "px";
+  }
+});
+
+document.addEventListener("mouseup", function(){
+  currentWindow = null;
+});
+
+</script>
+<link rel="stylesheet" href="style.css">
+</body>
+</html>
