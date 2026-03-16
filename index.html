@@ -460,5 +460,34 @@ document.addEventListener("mouseup", function(){
 
 </script>
 <link rel="stylesheet" href="style.css">
+
+<div id="const-menu" class="const-menu">
+  <b>New Folder</b>
+  <div><b>Properties</b></div>
+  <div><b>Change Desktop background</b></div>
+  <div><b>Stack it up</b></div>
+  <div><b>Show view parameters</b></div>
+</div>
+<script>
+  const constMenu = document.getElementById("const-menu")
+
+document.addEventListener("contextmenu", function(e){
+
+  e.preventDefault()
+
+  constMenu.style.display = "block"
+  constMenu.style.left = e.pageX + "px"
+  constMenu.style.top = e.pageY + "px"
+
+})
+
+document.addEventListener("click", function(){
+
+  constMenu.style.display = "none"
+
+})
+</script>
+</div>
+
 </body>
 </html>
