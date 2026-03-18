@@ -43,13 +43,13 @@ input {
 button {
   border: none;
   background: transparent;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   border-radius: 55px;
   padding: 10px 20px;
-  background-color: rgb(156, 148, 148);
-}
+  }
 #settingsApp {
 background-color: rgb(98, 97, 97);
+position: relative;
 }
 .menuverh {
   position: fixed;
@@ -214,9 +214,21 @@ html {
   background:rgba(0,0,0,0.08);
 }
 .appsApp {
-  filter: url(#glass-distortion);
-  backdrop-filter: blur(2px) ;
+  filter: url(#glass-distortion);;
 } 
 #terminalApp {
   background-color: black;
+}
+.buttons button {
+  background: transparent;
+}
+.hr {
+  width: 50px;
+  height: 3px;
+  background-color: black;
+  transform: rotate(-90deg);
+ border: none;
+  position: absolute;
+  bottom: 55px;
+  left: 1375px;
 }
